@@ -59,3 +59,40 @@
 
 <font size=2>我们记 <b><i>m(S)</i></b> 为对于果酱 <b>S dg</b> 和容量数组 <b>V</b> 的所需最小罐数。我们将一系列的中间问题定义如下：给定一个整数 <b>S</b> 和一个整数 $i \in \{1, ... , k\}$，记 <b>m(s,i)</b> 为 对于 <b>S dg</b> 的果酱只在容量系统 <b>V[1], V[2], ..., V[i]</b>中选择罐子时所需罐子的最小数量 (吐了。。法语版贼你妈绕口)</font>
 
+<font size=2>为了初始化这个递归，我们设：</font>
+
+​	<font size=1>- <i>m(0,i)</i> = 0, $\forall i \in \{1, ... ,k\}$ : 有可能存在0 dg的果酱和0个罐子</font>
+
+​	<font size=1>-<i>m(s,0)</i> = $+\infty$, $\forall s \geq 1$ : 不可能存在 $s \ge 1$ 但一个罐子都不需要的情况</font>
+
+​	<font size=1>-<i>m(s,i)</i> = $+\infty$, $\forall i \in \{1, ... ,k \}$, $\forall s < 0$ : 不可能存在 $s$ 总量为负数的情况</font>
+
+<font size=2><b>Q1.</b></font>
+
+<font size=2>a) 根据在前面定义的 <i>m(s,i)</i> 的值求出 <i>m(S)</i> 的值</font>
+
+<font size=2>b) 对于$i \in \{1, ... , k \}$, 证明下面的递推关系</font>
+$$
+m(s,i) = \left\{\begin{array}{rcl}
+0 & si\ s = 0 \\
+min\{m(s,i-1),m(s-V[i],i)+1) \} & sinon
+\end{array}\right.
+$$
+
+
+<font size=2><b>Q2.</b></font>
+
+<font size = 2>通过上一小题的递推关系得到的 <i>m(s,i)</i> 的值，允许我们找出 <b>m(S)</b>。(用伪代码) 写出一个基于这种递推关系的算法，并计算出 <b>m(S)</b> 的值，不要忘记指出算法中的起始调用(l'appel initial)。这种算法将<b>不</b>使用辅助数组去保存已经计算出来的值。</font>
+
+
+
+<font size=2><b>Q3.</b></font>
+
+<font size = 2>对于S = 5，k = 2, V[1] = 1 和 V[2] = 2，展现出你的算法的递归树 (l'arbre des appels récursifs de votre algorithme)。</font>
+
+
+
+<font size=2><b>Q4.</b></font>
+
+<font size = 2>在前一题的树中，<i>m(1,1)</i> 被计算了多少次？更简单地来说，如果k = 2, 有V[1] = 1 和 V[2] = 2时，用S来表示 <i>m(1,1,)</i> 会被计算多少次？(假设S是偶数)</font>
+
